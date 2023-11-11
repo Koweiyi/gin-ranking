@@ -22,7 +22,7 @@ func GetRoute() *gin.Engine {
 	r.Use(logger.Recover)
 
 	// redis 配置
-	store, _ := sessions_redis.NewStore(10, "tcp", config.RedisAdress, "", []byte("secret"))
+	store, _ := sessions_redis.NewStore(10, "tcp", config.RedisAdress, config.RedisPassword, []byte("secret"))
 	r.Use(sessions.Sessions("mysession", store))
 
 	user := r.Group("/user")
