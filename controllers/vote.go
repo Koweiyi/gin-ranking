@@ -18,6 +18,7 @@ func (v VoteController) AddVote(c *gin.Context) {
 
 	if userId == 0 || playerId == 0 {
 		RetuenError(c, 4004, "请输入正确信息！")
+		return
 	}
 
 	user, _ := models.GetUserInfo(userId)
@@ -28,7 +29,7 @@ func (v VoteController) AddVote(c *gin.Context) {
 
 	player, _ := models.GetPlayerInfo(playerId)
 	if player.Id == 0 {
-		RetuenError(c, 4001, "投票用户不存在")
+		RetuenError(c, 4001, "投票选手不存在")
 		return
 	}
 
