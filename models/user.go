@@ -29,9 +29,8 @@ func AddUser(username, password string) (int, error) {
 	return user.Id, err
 }
 
-func GetUserTest(id int) (User, error) {
+func GetUserInfo(userId int) (User, error) {
 	var user User
-	err := dao.DB.Where("id = ?", id).First(&user).Error
-
+	err := dao.DB.Where("id = ?", userId).First(&user).Error
 	return user, err
 }

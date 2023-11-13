@@ -76,8 +76,7 @@ func (u UserController) GetUserInfo(ctx *gin.Context) {
 	idstr := ctx.Param("id")
 	name := ctx.Param("name")
 	id, _ := strconv.Atoi(idstr)
-	user, _ := models.GetUserTest(id)
-
+	user, _ := models.GetUserInfo(id)
 	RetuenSucess(ctx, 200, name, user, 1)
 }
 

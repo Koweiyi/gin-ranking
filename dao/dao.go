@@ -4,6 +4,7 @@ import (
 	// "database/sql"
 	// "time"
 	// "example.com/gin-ranking/config"
+	"go-ranking/config"
 	logger "go-ranking/pkg"
 	"time"
 
@@ -19,8 +20,8 @@ var (
 )
 
 func init() {
-	dsn := "root:123456@tcp(127.0.0.1:3306)/ranking?charset=utf8mb4&parseTime=True&loc=Local"
-	DB, err = gorm.Open(mysql.Open(dsn), &gorm.Config{})
+	// dsn := "root:123456@tcp(127.0.0.1:3306)/ranking?charset=utf8mb4&parseTime=True&loc=Local"
+	DB, err = gorm.Open(mysql.Open(config.MySQLDSN), &gorm.Config{})
 
 	if err != nil {
 		logger.Error(map[string]interface{}{"mysql connect error": err.Error()})

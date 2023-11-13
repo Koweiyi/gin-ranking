@@ -29,18 +29,19 @@ func GetRoute() *gin.Engine {
 	{
 		user.POST("/register", controllers.UserController{}.Register)
 		user.POST("/login", controllers.UserController{}.Login)
-		// user.GET("/info/:id/:name", controllers.UserController{}.GetUserInfo)
-		// user.POST("/list", controllers.UserController{}.GetList)
-		// user.GET("/err", controllers.UserController{}.MakeError)
-
-		// user.PUT("/add", func(ctx *gin.Context) {
-		// 	ctx.String(200, "user add")
-		// })
-
-		// user.DELETE("/delete", func(ctx *gin.Context) {
-		// 	ctx.String(200, "user delete")
-		// })
 	}
 
+	player := r.Group("/player")
+	{
+		player.POST("/list", controllers.PlayerController{}.GetAllPlayer)
+
+	}
+
+	vote := r.Group("/vote")
+	{
+		vote.POST("/add", controllers.VoteController{}.AddVote)
+	}
+
+	
 	return r
 }
