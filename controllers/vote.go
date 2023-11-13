@@ -36,6 +36,7 @@ func (v VoteController) AddVote(c *gin.Context) {
 	vote, _ := models.GetVoteInfo(userId, playerId)
 	if vote.Id != 0 {
 		RetuenError(c, 4001, "请勿重复投票")
+		return
 	}
 
 	// 进行投票
